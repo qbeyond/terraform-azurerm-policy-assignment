@@ -5,7 +5,7 @@ data "azurerm_policy_definition" "this" {
 resource "azurerm_resource_group_policy_assignment" "this" {
   name                 = local.name
   policy_definition_id = var.policy_definition.id
-  scope                = var.scope
+  resource_group_id    = var.scope
 
   description  = var.description
   display_name = var.display_name
