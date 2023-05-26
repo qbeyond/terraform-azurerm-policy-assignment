@@ -4,4 +4,5 @@ locals {
       "value" = value
     }
   }
+  name = var.name == null ? var.policy_definition.name : var.name
 }

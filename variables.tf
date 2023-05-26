@@ -1,6 +1,7 @@
 variable "name" {
   type        = string
   description = "The name which should be used for this Policy Assignment. Changing this forces a new Resource Policy Assignment to be created."
+  default     = null
   nullable    = false
 }
 
@@ -22,6 +23,10 @@ variable "scope" {
   type        = string
   description = "The scope to assign the policy to."
   nullable    = false
+  validation {
+    condition     = length(regexall("^/subscriptions/[\\w-]+/resourceGroups/[\\w-]+$", var.scope)) > 0
+    error_message = "Only assignment to resource group is supported at the moment."
+  }
 }
 
 variable "location" {
@@ -45,7 +50,8 @@ variable "policy_definition" {
   type = object({
     id          = string
     policy_rule = string
+    name        = string
   })
-  description = "The policy Definition Object to use. Needed properties are id and policy_rule"
+  description = "The policy Definition. Policy Rule is used to calculate the needed role assignments. Name is used as a default for assignment."
   nullable    = false
 }
