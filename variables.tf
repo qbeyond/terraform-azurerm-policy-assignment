@@ -1,13 +1,15 @@
-variable "name" {
-  type        = string
-  description = "The name which should be used for this Policy Assignment. Changing this forces a new Resource Policy Assignment to be created."
-  default     = null
+variable "policy_definition_id" {
+  description = "The policy Definition id."
   nullable    = false
+  validation {
+    condition = regexall("/providers/Microsoft.Authorization/policy(Set)?Definitions/",var.policy_definition_id) > 0
+    error_message = "Provide valid id for Policy or PolicySet Definition"
+  }
 }
 
 variable "display_name" {
   type        = string
-  description = "The Display Name for this Policy Assignment."
+  description = "The Display Name for this Policy Assignment. If none is provided the Display Name of the definition is used if provided."
   default     = null
   nullable    = false
 }
@@ -44,14 +46,4 @@ variable "parameters" {
 variable "metadata" {
   type        = map(string)
   description = "A Map of any Metadata for this Policy"
-}
-
-variable "policy_definition" {
-  type = object({
-    id          = string
-    policy_rule = string
-    name        = string
-  })
-  description = "The policy Definition. Policy Rule is used to calculate the needed role assignments. Name is used as a default for assignment."
-  nullable    = false
 }
