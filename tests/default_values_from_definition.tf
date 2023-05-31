@@ -27,6 +27,7 @@ resource "azurerm_policy_set_definition" "with_display_name_description" {
 
   policy_definition_reference {
     policy_definition_id = azurerm_policy_definition.with_display_name_description.id
+    parameter_values = jsonencode({})
   }
 }
 
