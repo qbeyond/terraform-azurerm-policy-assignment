@@ -28,9 +28,16 @@ resource "azurerm_resource_group_policy_assignment" "this" {
   }
 }
 
-resource "azurerm_role_assignment" "this" {
+data "azurerm_role_definition" "this" {
   for_each           = toset(local.role_definition_ids)
+  role_definition_id = regex("[\\w-]+$", each.key) # we only need the UUID
+  scope = var.scope
+}
+
+
+resource "azurerm_role_assignment" "this" {
+  for_each = toset(local.role_definition_ids)
   scope              = var.scope
-  role_definition_id = each.value
+  role_definition_id = data.azurerm_role_definition.this[each.key].id
   principal_id       = azurerm_resource_group_policy_assignment.this.identity[0].principal_id
 }
