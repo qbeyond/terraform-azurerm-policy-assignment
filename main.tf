@@ -1,6 +1,6 @@
 data "azurerm_policy_set_definition" "this" {
   count = local.is_PolicySet ? 1 : 0
-  name = replace(var.policy_definition_id, "//.*//", "") #name is last part of id
+  name = replace(var.policy_definition_id, local.regex_pattern_id_to_name, "") #name is last part of id
 }
 
 data "azurerm_policy_definition" "this" {
