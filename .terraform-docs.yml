@@ -43,7 +43,7 @@ content: |-
 
   Currently only assignment of policy and policy set (Initiative) to resource group is supported.
   ```hcl
-  {{ include "examples/resouce_group/main.tf" }}
+  {{ include "examples/resource_group/main.tf" }}
   ```
   
   {{ .Requirements }}
