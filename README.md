@@ -63,7 +63,9 @@ module "policy_assignment_resource_group" {
 | <a name="input_parameters"></a> [parameters](#input\_parameters) | Map of Parameters for policy assignment | `any` | `null` | no |
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_resource_group_policy_assignment"></a> [resource\_group\_policy\_assignment](#output\_resource\_group\_policy\_assignment) | The `azurerm_resource_group_policy_assignment` object, if scope was a `resource_group`. |
 
 ## Resource types
 
@@ -90,6 +92,7 @@ No modules.
 | [random_uuid.name](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/uuid) | resource |
 | [azurerm_policy_definition.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/policy_definition) | data source |
 | [azurerm_policy_set_definition.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/policy_set_definition) | data source |
+| [azurerm_role_definition.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/role_definition) | data source |
 <!-- END_TF_DOCS -->
 
 ## Contribute
