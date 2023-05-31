@@ -6,6 +6,8 @@
 
 This module streamlines the assignment of policies. You don't need to worry about assigning the correct roles or using the correct resource.
 
+A `random_uuid` is used as the `name` of the assignment.
+
 <!-- BEGIN_TF_DOCS -->
 ## Usage
 
