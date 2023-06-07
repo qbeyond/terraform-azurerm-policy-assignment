@@ -71,4 +71,6 @@ module "policy_set_assignment_resource_group" {
   location = azurerm_resource_group.this.location
   policy_set_definition_id = data.azurerm_policy_set_definition.this[each.key].id
   parameters = each.value.parameters
+
+  
 }
