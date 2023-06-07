@@ -18,8 +18,8 @@ resource "azurerm_resource_group_policy_assignment" "this" {
   }
   lifecycle {
     precondition {
-      condition     = alltrue([for policy_id in var.policy_set_definition.policy_definition_reference.*.policy_definition_id : contains(var.policy_definitions.*.id, policy_id)])
-      error_message = "Not every referenced policy was provided in `policy_definitions`."
+      condition     = var.policy_set_definition.policy_definition_reference.*.policy_definition_id == var.policy_definitions.*.id
+      error_message = "The provided `id`s of `policy_definitions` must equal the referenced policies."
     }
   }
 }
