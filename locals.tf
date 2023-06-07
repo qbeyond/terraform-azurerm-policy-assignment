@@ -9,7 +9,7 @@ locals {
     }
   })
   metadata = var.metadata == null ? null : jsonencode(var.metadata)
-  is_PolicySet = var.policy_set_definition_id != null
+  is_PolicySet = var.policy_definition_id == null
   policy_definition_ids = local.is_PolicySet ? data.azurerm_policy_set_definition.this[0].policy_definition_reference.*.policy_definition_id : [var.policy_definition_id]
   role_definition_ids = flatten([for definition in data.azurerm_policy_definition.this : definition.role_definition_ids])
 
