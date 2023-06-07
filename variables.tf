@@ -7,10 +7,10 @@ variable "policy_set_definition" {
 }
 
 variable "policy_definitions" {
-  description = "The policy definitions, that are referenced by the policy set."
+  description = "The policy definitions, that are referenced by the policy set. `id` is used to validate, that every referenced policy is present. `policy_rule` is used to extracr ids of role definitions required for remediation."
   type = list(object({
     id = string
-    role_definition_ids = list(string)
+    policy_rule = string
   }))
 }
 
