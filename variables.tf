@@ -1,19 +1,17 @@
-variable "policy_definition_id" {
-  description = "The ID of the Policy Definition. Conflicts with `policy_set_definition_id`"
-  validation {
-    condition = var.policy_definition_id == null ? true : length(regexall("/providers/Microsoft.Authorization/policyDefinitions/",var.policy_definition_id)) > 0
-    error_message = "Provide valid id for Policy or PolicySet Definition"
-  }
-  default = null
+variable "policy_set_definition" {
+  description = "The policy set deifnition to assign."
+  type = object({
+    id = string
+    policy_definition_reference = list(object({policy_definition_id = string}))
+  })
 }
 
-variable "policy_set_definition_id" {
-  description = "The ID of the Policy Set Definition. Conflicts with `policy_definition_id`"
-  validation {
-    condition = var.policy_set_definition_id == null ? true :length(regexall("/providers/Microsoft.Authorization/policySetDefinitions/",var.policy_set_definition_id)) > 0
-    error_message = "Provide valid id for Policy or PolicySet Definition"
-  }
-  default = null
+variable "policy_definitions" {
+  description = "The policy definitions, that are referenced by the policy set."
+  type = list(object({
+    id = string
+    role_definition_ids = list(string)
+  }))
 }
 
 variable "display_name" {

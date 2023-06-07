@@ -4,7 +4,7 @@
 
 ----
 
-This module streamlines the assignment of policies. You don't need to worry about assigning the correct roles or using the correct resource.
+This module streamlines the assignment of policy sets. You don't need to worry about assigning the correct roles. **Currently only assignment to resource group is supported.**
 
 A `random_uuid` is used as the `name` of the assignment.
 

@@ -41,9 +41,22 @@ content: |-
 
   {{ indent 0 "#" }} Usage
 
-  Currently only assignment of policy and policy set (Initiative) to resource group is supported.
+  To avoid to rely on data that is only available after apply, you need to provide the `policy_set_definition` and `policy_definitions` that are referenced.
+
+  {{ indent 1 "#" }} Custom policy set
+
+  You can easily assign a custom policy set to a resource group.
+
   ```hcl
-  {{ include "examples/resource_group/main.tf" }}
+  {{ include "examples/resource_group_custom_policy_set/main.tf" }}
+  ```
+
+  {{ indent 1 "#" }} Built In policy set
+
+  To assign a built in policy set, you need to retrieve the set and referenced policies and pass them to the module.
+
+  ```hcl
+  {{ include "examples/resource_group_custom_policy_set/main.tf" }}
   ```
   
   {{ .Requirements }}

@@ -63,6 +63,7 @@ data "azurerm_policy_set_definition" "this" {
   for_each = local.policy_sets
   display_name = each.value.display_name
 }
+
 module "policy_set_assignment_resource_group" {
   source = "./.."
   for_each = local.policy_sets
