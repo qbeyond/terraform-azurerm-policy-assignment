@@ -50,7 +50,7 @@ data "azurerm_policy_definition" "this" {
   for_each = local.policies
   display_name = each.value.display_name
 }
-module "policy_assignment_resource_group_policy" {
+module "policy_assignment_resource_group" {
   for_each = local.policies
   source = "./.."
   scope = azurerm_resource_group.this.id
@@ -63,11 +63,11 @@ data "azurerm_policy_set_definition" "this" {
   for_each = local.policy_sets
   display_name = each.value.display_name
 }
-module "policy_assignment_resource_group_policy_set" {
+module "policy_set_assignment_resource_group" {
   source = "./.."
   for_each = local.policy_sets
   scope = azurerm_resource_group.this.id
   location = azurerm_resource_group.this.location
-  policy_definition_id = data.azurerm_policy_set_definition.this[each.key].id
+  policy_set_definition_id = data.azurerm_policy_set_definition.this[each.key].id
   parameters = each.value.parameters
 }

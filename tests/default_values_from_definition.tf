@@ -35,7 +35,7 @@ module "policy_assignment_with_display_name_description" {
   source = "./.."
   scope = azurerm_resource_group.this.id
   location = azurerm_resource_group.this.location
-  policy_definition_id = azurerm_policy_set_definition.with_display_name_description.id
+  policy_set_definition_id = azurerm_policy_set_definition.with_display_name_description.id
 }
 
 data "azurerm_policy_assignment" "with_display_name_description" {

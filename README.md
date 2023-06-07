@@ -97,6 +97,6 @@ No modules.
 
 ## Contribute
 
-Please use Pull requests to contribute. Run `terraform apply` for every `examples` and `tests`.
+Please use Pull requests to contribute. Run `terraform apply` for every `examples` and `tests`. The folders `test_fail_*` are expected to fail with the expected error stated in the `README.md`
 
 When a new Feature or Fix is ready to be released, create a new Github release and adhere to [Semantic Versioning 2.0.0](https://semver.org/lang/de/spec/v2.0.0.html).

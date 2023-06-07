@@ -1,10 +1,19 @@
 variable "policy_definition_id" {
-  description = "The policy Definition id."
-  nullable    = false
+  description = "The ID of the Policy Definition. Conflicts with `policy_set_definition_id`"
   validation {
-    condition = length(regexall("/providers/Microsoft.Authorization/policy(Set)?Definitions/",var.policy_definition_id)) > 0
+    condition = var.policy_definition_id == null ? true : length(regexall("/providers/Microsoft.Authorization/policyDefinitions/",var.policy_definition_id)) > 0
     error_message = "Provide valid id for Policy or PolicySet Definition"
   }
+  default = null
+}
+
+variable "policy_set_definition_id" {
+  description = "The ID of the Policy Set Definition. Conflicts with `policy_definition_id`"
+  validation {
+    condition = var.policy_set_definition_id == null ? true :length(regexall("/providers/Microsoft.Authorization/policySetDefinitions/",var.policy_set_definition_id)) > 0
+    error_message = "Provide valid id for Policy or PolicySet Definition"
+  }
+  default = null
 }
 
 variable "display_name" {
@@ -37,7 +46,7 @@ variable "location" {
 
 variable "parameters" {
   type        = any
-  description = "Map of Parameters for policy assignment"
+  description = "Map of Parameters for policy assignment."
   default = null
   validation {
     condition = var.parameters == null ? true : length(keys(var.parameters)) > 0
