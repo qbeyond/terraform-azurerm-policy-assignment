@@ -12,7 +12,7 @@ permissions: {}
 jobs:
   docs:
     runs-on: ubuntu-latest
-    permissions: 
+    permissions:
       contents: write
     steps:
       - uses: actions/checkout@v3
@@ -22,4 +22,4 @@ jobs:
         uses: terraform-docs/gh-actions@main
         with:
           config-file: .terraform-docs.yml
-          git-push: "true"
+          git-push: true

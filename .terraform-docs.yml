@@ -28,7 +28,7 @@ content: |-
     {{- $resource := append $resource .Resource -}}
     {{- $_ := set .Dict .Key $resource -}}
   {{- end -}}
-  
+
   {{- $filesResources := dict -}}
   {{- $resourceTypes := dict -}}
   {{- range .Module.Resources -}}
@@ -58,7 +58,7 @@ content: |-
   ```hcl
   {{ include "examples/resource_group_custom_policy_set/main.tf" }}
   ```
-  
+
   {{ .Requirements }}
   {{ .Providers }}
   {{ .Inputs }}
@@ -101,7 +101,6 @@ content: |-
 
               | Name | Type |
               |------|------|
-              
               {{- range $resources -}}
                 {{- $isResource := and $.Config.Sections.Resources ( eq "resource" (printf "%s" .GetMode)) }}
                 {{- $isDataResource := and $.Config.Sections.DataSources ( eq "data source" (printf "%s" .GetMode)) }}
