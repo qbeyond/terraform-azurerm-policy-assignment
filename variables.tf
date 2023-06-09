@@ -3,6 +3,8 @@ variable "policy_set_definition" {
   type = object({
     id                          = string
     policy_definition_reference = list(object({ policy_definition_id = string }))
+    display_name                = optional(string)
+    description                 = optional(string)
   })
 }
 
