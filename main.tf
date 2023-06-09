@@ -18,8 +18,8 @@ resource "azurerm_resource_group_policy_assignment" "this" {
   }
   lifecycle {
     precondition {
-      # Check if var.policy_definitions.*.id equals var.policy_set_definition.policy_definition_reference.*.policy_definition_id
-      condition     = length(setunion(setsubtract(var.policy_definitions.*.id, var.policy_set_definition.policy_definition_reference.*.policy_definition_id), setsubtract(var.policy_set_definition.policy_definition_reference.*.policy_definition_id, var.policy_definitions.*.id))) == 0
+      # Check if var.policy_definitions[*]id equals var.policy_set_definition.policy_definition_reference[*]policy_definition_id
+      condition     = length(setunion(setsubtract(var.policy_definitions[*].id, var.policy_set_definition.policy_definition_reference[*].policy_definition_id), setsubtract(var.policy_set_definition.policy_definition_reference[*].policy_definition_id, var.policy_definitions[*].id))) == 0
       error_message = "The provided `id`s of `policy_definitions` must equal the referenced policies."
     }
   }

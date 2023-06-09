@@ -5,8 +5,8 @@ provider "azurerm" {
 
 resource "random_pet" "this" {
   separator = ""
-  length = 1
-  prefix = "PolicyAssignment"
+  length    = 1
+  prefix    = "PolicyAssignment"
 }
 
 resource "azurerm_resource_group" "this" {
@@ -19,14 +19,14 @@ data "azurerm_policy_set_definition" "this" {
 }
 
 data "azurerm_policy_definition" "this" {
-  for_each = toset(data.azurerm_policy_set_definition.this.policy_definition_reference.*.policy_definition_id)
-  name = regex("[\\w-]+$", each.key)
+  for_each = toset(data.azurerm_policy_set_definition.this.policy_definition_reference[*].policy_definition_id)
+  name     = regex("[\\w-]+$", each.key)
 }
 
 module "policy_assignment_resource_group" {
-  source = "../.."
-  scope = azurerm_resource_group.this.id
-  location = azurerm_resource_group.this.location
+  source                = "../.."
+  scope                 = azurerm_resource_group.this.id
+  location              = azurerm_resource_group.this.location
   policy_set_definition = data.azurerm_policy_set_definition.this
-  policy_definitions = [for key,definition in data.azurerm_policy_definition.this : definition]
+  policy_definitions    = [for key, definition in data.azurerm_policy_definition.this : definition]
 }
