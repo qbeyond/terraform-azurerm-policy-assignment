@@ -39,8 +39,8 @@ module "policy_assignment_with_display_name_description" {
   policy_definitions    = [azurerm_policy_definition.with_display_name_description]
 }
 
-# tflint-ignore: terraform_unused_declarations
 # Data source is used to validate the module
+# tflint-ignore: terraform_unused_declarations
 data "azurerm_policy_assignment" "with_display_name_description" {
   name     = module.policy_assignment_with_display_name_description.resource_group_policy_assignment.name
   scope_id = azurerm_resource_group.this.id
