@@ -8,6 +8,7 @@ locals {
   })
   metadata = var.metadata == null ? null : jsonencode(var.metadata)
 
+  # extract the role_ids from policy_rules, because the property role_ids is only available after apply
   role_definition_ids = distinct(flatten([for definition in var.policy_definitions : try(jsondecode(definition.policy_rule).then.details.roleDefinitionIds, [])]))
 
   regex_pattern_id_to_name = "[\\w-]+$"

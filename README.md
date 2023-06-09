@@ -4,7 +4,7 @@
 
 ----
 
-This module streamlines the assignment of policy sets. You don't need to worry about assigning the correct roles. **Currently only assignment to resource group is supported.**
+This module streamlines the assignment of policy sets. You don't need to worry about assigning the correct roles, because the needed roles are calculated based on the referenced policies. **Currently only assignment to resource group is supported.**
 
 A `random_uuid` is used as the `name` of the assignment.
 
@@ -180,6 +180,8 @@ No modules.
 
 ## Contribute
 
-Please use Pull requests to contribute. Run `terraform apply` for every `examples` and `tests`. The folders `test_fail_*` are expected to fail with the expected error stated in the `README.md`
+Please use Pull requests to contribute. 
+
+Run `terraform apply` for any `examples` and `tests` twice. The second apply shouldn't plan any changes.
 
 When a new Feature or Fix is ready to be released, create a new Github release and adhere to [Semantic Versioning 2.0.0](https://semver.org/lang/de/spec/v2.0.0.html).
