@@ -72,7 +72,7 @@ module "policy_assignment_resource_group" {
 
 ### Built In policy set
 
-To assign a built in policy set, you need to retrieve the set and referenced policies and pass them to the module.
+To assign a built in policy set, you need to retrieve the set and referenced policies as data sources and pass them to the module.
 
 ```hcl
 provider "azurerm" {
