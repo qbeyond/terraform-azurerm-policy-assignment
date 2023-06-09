@@ -53,7 +53,7 @@ content: |-
 
   {{ indent 1 "#" }} Built In policy set
 
-  To assign a built in policy set, you need to retrieve the set and referenced policies and pass them to the module.
+  To assign a built in policy set, you need to retrieve the set and referenced policies as data sources and pass them to the module.
 
   ```hcl
   {{ include "examples/resource_group_custom_policy_set/main.tf" }}
