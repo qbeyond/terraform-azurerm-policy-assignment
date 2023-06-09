@@ -1,16 +1,16 @@
 variable "policy_set_definition" {
   description = "The policy set deifnition to assign."
   type = object({
-    id = string
-    policy_definition_reference = list(object({policy_definition_id = string}))
+    id                          = string
+    policy_definition_reference = list(object({ policy_definition_id = string }))
   })
 }
 
 variable "policy_definitions" {
   description = "The policy definitions, that are referenced by the policy set. `id` is used to validate, that every referenced policy is present. `policy_rule` is used to extract ids of role definitions required for remediation. `role_definition_id` is used to validate the role_assignment."
   type = list(object({
-    id = string
-    policy_rule = string
+    id                  = string
+    policy_rule         = string
     role_definition_ids = list(string)
   }))
 }
@@ -46,9 +46,9 @@ variable "location" {
 variable "parameters" {
   type        = any
   description = "Map of Parameters for policy assignment."
-  default = null
+  default     = null
   validation {
-    condition = var.parameters == null ? true : length(keys(var.parameters)) > 0
+    condition     = var.parameters == null ? true : length(keys(var.parameters)) > 0
     error_message = "Parameters should be a map of values to assign to the parameters."
   }
 }
@@ -56,5 +56,5 @@ variable "parameters" {
 variable "metadata" {
   type        = map(string)
   description = "A Map of any Metadata for this Policy assignment."
-  default = null
+  default     = null
 }
