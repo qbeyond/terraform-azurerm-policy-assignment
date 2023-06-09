@@ -10,6 +10,7 @@ resource "random_pet" "this" {
 }
 
 resource "azurerm_resource_group" "this" {
+  # ts:skip=AC_AZURE_0389 Examples should not be locked, but immediately destroyed
   name     = "rg-dev-${random_pet.this.id}-01"
   location = "West Europe"
 }
