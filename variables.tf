@@ -60,3 +60,13 @@ variable "metadata" {
   description = "A Map of any Metadata for this Policy assignment."
   default     = null
 }
+
+variable "name" {
+  type        = string
+  description = "The name which should be used for this Policy Assignment. If none is provided a random string prefixed with `pa-` is used. Changing this forces a new Resource Policy Assignment to be created. Cannot exceed 24 characters in length, because this is the maximum for management group assignments."
+  default     = null
+  validation {
+    condition     = var.name == null ? true : length(var.name) <= 24
+    error_message = "The name of the policy assignment must not exceed 24 characters."
+  }
+}

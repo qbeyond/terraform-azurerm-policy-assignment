@@ -1,4 +1,5 @@
 locals {
+  name         = coalesce(var.name, random_id.name.hex)
   display_name = try(coalesce(var.display_name, var.policy_set_definition.display_name), null)
   description  = try(coalesce(var.description, var.policy_set_definition.description), null)
   parameters = var.parameters == null ? null : jsonencode({

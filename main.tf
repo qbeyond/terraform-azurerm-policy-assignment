@@ -1,8 +1,10 @@
-resource "random_uuid" "name" {
+resource "random_id" "name" {
+  byte_length = 10
+  prefix      = "pa-"
 }
 
 resource "azurerm_resource_group_policy_assignment" "this" {
-  name                 = random_uuid.name.result
+  name                 = local.name
   policy_definition_id = var.policy_set_definition.id
   resource_group_id    = var.scope
 
