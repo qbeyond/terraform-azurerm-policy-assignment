@@ -147,6 +147,7 @@ module "policy_assignment_resource_group" {
 | <a name="input_description"></a> [description](#input\_description) | A description which should be used for this Policy Assignment. If none is provided the Description of the definition is used. | `string` | `null` | no |
 | <a name="input_display_name"></a> [display\_name](#input\_display\_name) | The Display Name for this Policy Assignment. If none is provided the Display Name of the definition is used. | `string` | `null` | no |
 | <a name="input_metadata"></a> [metadata](#input\_metadata) | A Map of any Metadata for this Policy assignment. | `map(string)` | `null` | no |
+| <a name="input_name"></a> [name](#input\_name) | The name which should be used for this Policy Assignment. If none is provided a random string prefixed with `pa-` is used. Changing this forces a new Resource Policy Assignment to be created. Cannot exceed 24 characters in length, because this is the maximum for management group assignments. | `string` | `null` | no |
 | <a name="input_parameters"></a> [parameters](#input\_parameters) | Map of Parameters for policy assignment. | `any` | `null` | no |
 ## Outputs
 
@@ -160,7 +161,7 @@ module "policy_assignment_resource_group" {
 |------|-------|
 | [azurerm_resource_group_policy_assignment](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group_policy_assignment) | 1 |
 | [azurerm_role_assignment](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | 1 |
-| [random_uuid](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/uuid) | 1 |
+| [random_id](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) | 1 |
 
 **`Used` only includes resource blocks.** `for_each` and `count` meta arguments, as well as resource blocks of modules are not considered.
 
@@ -176,7 +177,7 @@ No modules.
 |------|------|
 | [azurerm_resource_group_policy_assignment.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group_policy_assignment) | resource |
 | [azurerm_role_assignment.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | resource |
-| [random_uuid.name](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/uuid) | resource |
+| [random_id.name](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) | resource |
 | [azurerm_role_definition.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/role_definition) | data source |
 <!-- END_TF_DOCS -->
 
