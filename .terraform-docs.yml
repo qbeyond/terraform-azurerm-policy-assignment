@@ -1,7 +1,7 @@
 formatter: "markdown"
 
 # Tested with this version
-# As Majorversion is 0 any change may break
+# As major version is 0 any change may break
 version: ">=0.16.0"
 
 sections:
@@ -28,7 +28,7 @@ content: |-
     {{- $resource := append $resource .Resource -}}
     {{- $_ := set .Dict .Key $resource -}}
   {{- end -}}
-  
+
   {{- $filesResources := dict -}}
   {{- $resourceTypes := dict -}}
   {{- range .Module.Resources -}}
@@ -41,11 +41,24 @@ content: |-
 
   {{ indent 0 "#" }} Usage
 
-  It's very easy to use!
+  To avoid to rely on data that is only available after apply, you need to provide the `policy_set_definition` and `policy_definitions` that are referenced.
+
+  {{ indent 1 "#" }} Custom policy set
+
+  You can easily assign a custom policy set to a resource group.
+
   ```hcl
-  {{ include "examples/basic/main.tf" }}
+  {{ include "examples/resource_group_custom_policy_set/main.tf" }}
   ```
-  
+
+  {{ indent 1 "#" }} Built In policy set
+
+  To assign a built in policy set, you need to retrieve the set and referenced policies as data sources and pass them to the module.
+
+  ```hcl
+  {{ include "examples/resource_group_custom_policy_set/main.tf" }}
+  ```
+
   {{ .Requirements }}
   {{ .Providers }}
   {{ .Inputs }}
@@ -88,7 +101,6 @@ content: |-
 
               | Name | Type |
               |------|------|
-              
               {{- range $resources -}}
                 {{- $isResource := and $.Config.Sections.Resources ( eq "resource" (printf "%s" .GetMode)) }}
                 {{- $isDataResource := and $.Config.Sections.DataSources ( eq "data source" (printf "%s" .GetMode)) }}
