@@ -22,9 +22,9 @@ locals {
       parameters   = null
     }
     audit_with_parameters = {
-      display_name = "Ensures resources to not have a specific tag."
+      display_name = "Enable Azure Cosmos DB throughput policy"
       parameters = {
-        tagName = "SomeTagName"
+        throughputMax = 1
       }
     }
   }
