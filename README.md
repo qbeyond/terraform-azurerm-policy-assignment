@@ -1,12 +1,12 @@
-# Module
-[![GitHub tag](https://img.shields.io/github/tag/qbeyond/terraform-azurerm-policy-assignment.svg)](https://registry.terraform.io/modules/qbeyond/terraform-azurerm-policy-assignment/provider/latest)
-[![License](https://img.shields.io/github/license/qbeyond/terraform-azurerm-policy-assignment.svg)](https://github.com/qbeyond/terraform-azurerm-policy-assignment/blob/main/LICENSE)
+# Azure Policy Set Assignment
+[![GitHub tag](https://img.shields.io/github/tag/qbeyond/terraform-azurerm-policy-set-assignment.svg)](https://registry.terraform.io/modules/qbeyond/terraform-azurerm-policy-assignment/provider/latest)
+[![License](https://img.shields.io/github/license/qbeyond/terraform-azurerm-policy-set-assignment.svg)](https://github.com/qbeyond/terraform-azurerm-policy-assignment/blob/main/LICENSE)
 
 ----
 
-This module streamlines the assignment of policy sets. You don't need to worry about assigning the correct roles, because the needed roles are calculated based on the referenced policies. **Currently only assignment to resource group is supported.**
+This terraform module streamlines the assignment of policy sets. You don't need to worry about assigning the correct roles, because the needed roles are calculated based on the referenced policies. **Currently only assignment to resource group is supported.**
 
-A `random_uuid` is used as the `name` of the assignment.
+A `random_string` 20 characters long prefixed with `pa-`is used as `name` if none is provided.
 
 <!-- BEGIN_TF_DOCS -->
 ## Usage
