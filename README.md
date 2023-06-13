@@ -30,7 +30,7 @@ resource "random_pet" "this" {
 }
 
 resource "azurerm_resource_group" "this" {
-  #ts:skip=reme_resourceGroupLock Example RGs should not be locked, but immediately destroyed
+  #ts:skip=AC_AZURE_0389 Example RGs should not be locked, but immediately destroyed
   name     = "rg-dev-${random_pet.this.id}-01"
   location = "West Europe"
 }
@@ -52,7 +52,7 @@ resource "azurerm_policy_definition" "this" {
 }
 
 resource "azurerm_policy_set_definition" "this" {
-  name         = "pd-policyset-does-nothing-${random_pet.this.id}"
+  name         = "pd-policy-set-does-nothing-${random_pet.this.id}"
   display_name = "A policy set that is just used to test a policy assignment."
   policy_type  = "Custom"
 
@@ -88,7 +88,7 @@ resource "random_pet" "this" {
 }
 
 resource "azurerm_resource_group" "this" {
-  #ts:skip=reme_resourceGroupLock Example RGs should not be locked, but immediately destroyed
+  #ts:skip=AC_AZURE_0389 Example RGs should not be locked, but immediately destroyed
   name     = "rg-dev-${random_pet.this.id}-01"
   location = "West Europe"
 }
@@ -110,7 +110,7 @@ resource "azurerm_policy_definition" "this" {
 }
 
 resource "azurerm_policy_set_definition" "this" {
-  name         = "pd-policyset-does-nothing-${random_pet.this.id}"
+  name         = "pd-policy-set-does-nothing-${random_pet.this.id}"
   display_name = "A policy set that is just used to test a policy assignment."
   policy_type  = "Custom"
 
