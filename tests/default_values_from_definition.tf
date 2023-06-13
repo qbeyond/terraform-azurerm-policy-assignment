@@ -20,7 +20,7 @@ resource "azurerm_policy_definition" "with_display_name_description" {
 }
 
 resource "azurerm_policy_set_definition" "with_display_name_description" {
-  name         = "pd-policyset-does-nothing-${random_id.default_values_from_definition.id}"
+  name         = "pd-policy-set-does-nothing-${random_id.default_values_from_definition.id}"
   policy_type  = "Custom"
   display_name = "azurerm_policy_set_definition"
   description  = "azurerm_policy_set_definition"

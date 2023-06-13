@@ -10,7 +10,7 @@ resource "random_pet" "this" {
 }
 
 resource "azurerm_resource_group" "this" {
-  #ts:skip=reme_resourceGroupLock Tests RGs should not be locked, but immediately destroyed
+  #ts:skip=AC_AZURE_0389 Tests RGs should not be locked, but immediately destroyed
   name     = "rg-dev-${random_pet.this.id}-01"
   location = "West Europe"
 }
@@ -22,7 +22,7 @@ locals {
       parameters   = null
     }
     audit_with_parameters = {
-      display_name = "Ensures resources to not have a specifc tag."
+      display_name = "Ensures resources to not have a specific tag."
       parameters = {
         tagName = "SomeTagName"
       }

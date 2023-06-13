@@ -1,7 +1,7 @@
 formatter: "markdown"
 
 # Tested with this version
-# As Majorversion is 0 any change may break
+# As major version is 0 any change may break
 version: ">=0.16.0"
 
 sections:

@@ -1,5 +1,5 @@
 variable "policy_set_definition" {
-  description = "The policy set deifnition to assign."
+  description = "The policy set definition to assign."
   type = object({
     id                          = string
     policy_definition_reference = list(object({ policy_definition_id = string }))
