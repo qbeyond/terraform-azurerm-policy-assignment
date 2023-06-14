@@ -8,6 +8,10 @@ This terraform module streamlines the assignment of policy sets. You don't need 
 
 A `random_string` 20 characters long prefixed with `pa-`is used as `name` if none is provided.
 
+## Required permissions
+
+As this module assigns the required roles to the managed identity you must have the `Microsoft.Authorization/roleAssignments/write` permission such as `User Access Administrator` or `Owner` on `scope`.
+
 <!-- BEGIN_TF_DOCS -->
 ## Usage
 
