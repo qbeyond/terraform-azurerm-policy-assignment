@@ -1,5 +1,22 @@
+provider "azurerm" {
+  features {
+  }
+}
+
 resource "random_id" "default_values_from_definition" {
   byte_length = 8
+}
+
+resource "random_pet" "this" {
+  separator = ""
+  length    = 1
+  prefix    = "PolicyAssignment"
+}
+
+resource "azurerm_resource_group" "this" {
+  #ts:skip=AC_AZURE_0389 Tests RGs should not be locked, but immediately destroyed
+  name     = "rg-dev-${random_pet.this.id}-01"
+  location = "West Europe"
 }
 
 resource "azurerm_policy_definition" "with_display_name_description" {
@@ -32,7 +49,7 @@ resource "azurerm_policy_set_definition" "with_display_name_description" {
 }
 
 module "policy_assignment_with_display_name_description" {
-  source                = "./.."
+  source                = "./../.."
   scope                 = azurerm_resource_group.this.id
   location              = azurerm_resource_group.this.location
   policy_set_definition = azurerm_policy_set_definition.with_display_name_description
