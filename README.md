@@ -189,6 +189,6 @@ No modules.
 
 Please use Pull requests to contribute. 
 
-Run `terraform apply` for any `examples` and `tests` twice. The second apply shouldn't plan any changes.
+Run `terraform apply` for any `examples` and `tests` twice. The second apply shouldn't plan any changes. You may run `terraform test` to run the tests, although the tests are using conditions rather than the experimental `terraform.io/builtin/test` resources.
 
 When a new Feature or Fix is ready to be released, create a new Github release and adhere to [Semantic Versioning 2.0.0](https://semver.org/lang/de/spec/v2.0.0.html).

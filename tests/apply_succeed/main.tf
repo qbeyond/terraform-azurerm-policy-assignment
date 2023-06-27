@@ -42,7 +42,7 @@ data "azurerm_policy_definition" "this" {
 }
 
 module "policy_set_assignment_resource_group" {
-  source                = "./.."
+  source                = "./../.."
   for_each              = local.policy_sets
   scope                 = azurerm_resource_group.this.id
   location              = azurerm_resource_group.this.location
